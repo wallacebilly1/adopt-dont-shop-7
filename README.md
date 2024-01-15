@@ -18,7 +18,7 @@ In this project, students will build upon the code in this repo to create a Pet 
 
 ## Requirements
 
-- Project must use Rails 7.0.x, Ruby 3.2.2, and PostgreSQL
+- Project must use Rails 7.1.x, Ruby 3.2.2, and PostgreSQL
 - Use of `resources` on this project is not permitted
 - Use of scaffolding on this project is not permitted
 - Students wanting to use any extra gems on this project must first get permission from your instructors
@@ -33,4 +33,3 @@ In this project, students will build upon the code in this repo to create a Pet 
 ## Check In
 
 This project will have one Check In. During your Check In, you should be prepared to review your database schema for the many to many relationship, your deployment to the internet, and your GitHub Projects board.
-
