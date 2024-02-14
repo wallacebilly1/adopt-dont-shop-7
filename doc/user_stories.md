@@ -272,6 +272,8 @@ And I reject one or more pets for the application
 And I approve all other pets on the application
 Then I am taken back to the admin application show page
 And I see the application's status has changed to "Rejected"
+
+Note: This is different than what you might expect in a real-world scenario. With this adoption process, if one or more pets on an application is rejected, then the entire application is "Rejected"
 ```
 
 ```
