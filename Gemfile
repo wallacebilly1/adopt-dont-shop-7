@@ -55,8 +55,12 @@ group :development, :test do
   gem "rspec-rails"
   gem "launchy"
   gem "capybara"
+  gem "rubocop"
+  gem "rubocop-discourse"
   gem "shoulda-matchers"
   gem "simplecov"
+  gem "solargraph"
+  gem "standard"
   gem "orderly"
 end
 
