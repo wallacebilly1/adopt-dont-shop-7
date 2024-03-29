@@ -14,3 +14,31 @@ adoption_application = AdoptionApplication.create!(
   description: "I like doggos",
   status: "in progress"
 )
+shelter = Shelter.create(
+  name: "Aurora shelter",
+  city: "Aurora, CO",
+  foster_program: false,
+  rank: 9
+)
+pet1 = Pet.create(
+  adoptable: true,
+  age: 1,
+  breed: "sphynx",
+  name: "Lucille Bald",
+  shelter_id: shelter.id
+)
+pet2 = Pet.create(
+  adoptable: true,
+  age: 3,
+  breed: "doberman",
+  name: "Lobster",
+  shelter_id: shelter.id
+)
+ApplicationPet.create!(
+  pet_id: pet1.id,
+  adoption_application_id: adoption_application.id
+)
+ApplicationPet.create!(
+  pet_id: pet2.id,
+  adoption_application_id: adoption_application.id
+)

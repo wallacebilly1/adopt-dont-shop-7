@@ -5,6 +5,14 @@
 <h3><%= @adoption_application.zip_code %></h3>
 <h3><%= @adoption_application.description %></h3>
 <h3><%= @adoption_application.status %></h3>
+<h3>Pets applied for:</h3>
+<ol>
+  <% @pets.each do |pet| %>
+    <li>
+      <%= link_to "#{pet.name}", "/pets/#{pet.id}" %>
+    </li>
+  <% end %>
+</ol>
 
 <p><%= link_to "Update #{@adoption_application.name}", "adoption_applications/#{@adoption_application.id}/edit" %></p>
 <p><%= link_to "Delete #{@adoption_application.name}", "@adoption_applications/#{@adoption_application.id}", method: :delete %></p>
