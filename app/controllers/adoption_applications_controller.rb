@@ -3,6 +3,5 @@ class AdoptionApplicationsController < ApplicationController
 
   def show
     @adoption_application = AdoptionApplication.find(params[:id])
-    @pets = ApplicationPet.pets_from_id(params[:id])
   end
 end

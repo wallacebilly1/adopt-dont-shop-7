@@ -7,7 +7,7 @@
 <h3><%= @adoption_application.status %></h3>
 <h3>Pets applied for:</h3>
 <ol>
-  <% @pets.each do |pet| %>
+  <% @adoption_application.pets.each do |pet| %>
     <li>
       <%= link_to "#{pet.name}", "/pets/#{pet.id}" %>
     </li>
