@@ -5,3 +5,12 @@
 #
 #   movies = Movie.create([{ name: "Star Wars" }, { name: "Lord of the Rings" }])
 #   Character.create(name: "Luke", movie: movies.first)
+adoption_application = AdoptionApplication.create!(
+  name: "Billy Neilson",
+  street_address: "123 Main St",
+  city: "Denver",
+  state: "CO",
+  zip_code: "80210",
+  description: "I like doggos",
+  status: "in progress"
+)
