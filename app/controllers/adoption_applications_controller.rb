@@ -1,6 +1,6 @@
 class AdoptionApplicationsController < ApplicationController
   def index
-    @adoption_applications = AdoptionApplication.all
+
   end
 
   def show
