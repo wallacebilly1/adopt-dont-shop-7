@@ -28,7 +28,6 @@ RSpec.describe "the adoption application new" do
     click_button("Submit Application")
 
     expect(page).to have_current_path("/adoption_applications/new")
-    expect(page).to have_content("Please add your city")
-    expect(page).to have_content("Please add your state")
+    expect(page).to have_content("Error: City can't be blank, State can't be blank")
   end
 end
