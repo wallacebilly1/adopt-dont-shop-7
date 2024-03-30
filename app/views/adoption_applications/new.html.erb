@@ -13,5 +13,6 @@
   <%= form.number_field :zip_code %></br>
   <%= form.label "Please state why you would be a good dog owner:" %>
   <%= form.text_area :description %></br>
+  <%= form.hidden_field :status, value: "In Progress" %>
   <%= form.submit "Submit Application" %>
 <% end %>

@@ -13,12 +13,11 @@ class AdoptionApplicationsController < ApplicationController
 
   def create
     adoption_application = AdoptionApplication.create!(adoption_application_params)
-    # redirect_to "/adoption_applications/#{adoption_application_params[:id]}"
-    redirect_to "/adoption_applications/#{params[:id]}"
+    redirect_to "/adoption_applications/#{adoption_application.id}"
   end
 
 private 
   def adoption_application_params
-    params.permit(:name, :street_address, :city, :state, :zip_code, :description)
+    params.permit(:name, :street_address, :city, :state, :zip_code, :description, :status)
   end
 end
