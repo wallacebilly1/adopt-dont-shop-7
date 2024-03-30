@@ -13,7 +13,7 @@ class AdoptionApplicationsController < ApplicationController
 
   def create
     adoption_application = AdoptionApplication.new(adoption_application_params)
-    
+
     if adoption_application.save
       redirect_to "/adoption_applications/#{adoption_application.id}"
     else 
@@ -21,7 +21,6 @@ class AdoptionApplicationsController < ApplicationController
       redirect_to "/adoption_applications/new"
       flash[:alert] = "Error: #{error_message(adoption_application.errors)}"
     end
-    
   end
 
 private 

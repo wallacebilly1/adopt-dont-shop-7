@@ -1,6 +1,6 @@
 require "rails_helper"
 
-RSpec.describe "the adoption application show" do
+RSpec.describe "the adoption application show page" do
   before(:each) do
     @adoption_application = AdoptionApplication.create!(
       name: "Billy Neilson",
@@ -8,7 +8,8 @@ RSpec.describe "the adoption application show" do
       city: "Denver",
       state: "CO",
       zip_code: "80210",
-      description: "I like doggos"
+      description: "I like doggos",
+      status: "In Progress"
     )
     @shelter = Shelter.create(
       name: "Aurora shelter",
@@ -41,6 +42,8 @@ RSpec.describe "the adoption application show" do
   end
 
   it "shows the adoption application and all its attributes" do
+    @adoption_application.pending
+
     visit "/adoption_applications/#{@adoption_application.id}"
 
     expect(page).to have_content(@adoption_application.name)
@@ -55,6 +58,7 @@ RSpec.describe "the adoption application show" do
   end
 
   it "has links to the pets' show pages" do
+    @adoption_application.pending
     visit "/adoption_applications/#{@adoption_application.id}"
 
     expect(page).to have_link(@pet1.name)
@@ -70,10 +74,8 @@ RSpec.describe "the adoption application show" do
 
     expect(page).to have_content("Add a Pet to this application")
 
-    within "add a pet..." do
-      fill_in("add a pet").with("sphynx")
-      click_on("submit")
-    end
+    fill_in("pet search bar", with: "sphynx")
+    click_on("search pets")
 
     expect(page).to have_current_path("/adoption_applications/#{@adoption_application.id}")
     expect(page).to have_link("sphynx")
