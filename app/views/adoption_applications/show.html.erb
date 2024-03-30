@@ -1,13 +1,13 @@
-<h1><%= @adoption_application.name %></h1>
-<h3><%= @adoption_application.street_address %></h3>
-<h3><%= @adoption_application.city %></h3>
-<h3><%= @adoption_application.state %></h3>
-<h3><%= @adoption_application.zip_code %></h3>
-<h3><%= @adoption_application.description %></h3>
-<h3><%= @adoption_application.status %></h3>
+<h1>Name: <%= @adoption_application.name %></h1>
+<h3>Address: <%= @adoption_application.street_address %> 
+  <%= @adoption_application.city %>,
+  <%= @adoption_application.state %> 
+  <%= @adoption_application.zip_code %></h3>
+<h3>Description: <%= @adoption_application.description %></h3>
+<h3>Status: <%= @adoption_application.status %></h3>
 <h3>Pets applied for:</h3>
 <ol>
-  <% @pets.each do |pet| %>
+  <% @adoption_application.pets.each do |pet| %>
     <li>
       <%= link_to "#{pet.name}", "/pets/#{pet.id}" %>
     </li>

@@ -81,4 +81,35 @@ RSpec.describe "the pets index" do
     expect(page).to have_content(pet_2.name)
     expect(page).to_not have_content(pet_3.name)
   end
+
+  describe "User Story 2" do
+    # As a visitor
+    # When I visit the pet index page
+    # Then I see a link to "Start an Application"
+    # When I click this link
+    # Then I am taken to the new application page where I see a form
+    # When I fill in this form with my:
+    #   - Name
+    #   - Street Address
+    #   - City
+    #   - State
+    #   - Zip Code
+    #   - Description of why I would make a good home
+    # And I click submit
+    # Then I am taken to the new application's show page
+    # And I see my Name, address information, and description of why I would make a good home
+    # And I see an indicator that this application is "In Progress"
+    it "displays a link to 'Start an Application' that takes you to a new application page where I see a form" do
+      visit "/pets"
+
+      expect(page).to have_button("Start an Application")
+
+      click_on("Start an Application")
+
+      expect(page).to have_current_path("/adoption_applications/new")
+
+      expect(page).to have_content("Apply for Adoption")
+    end      
+  end
+  
 end
