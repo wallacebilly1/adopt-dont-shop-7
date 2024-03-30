@@ -26,7 +26,13 @@
 <% if @pet.class == String %>
   <p>Could not find pet by the name of <%= @pet %>
 <% elsif @pet %>
-  <p><strong><%= @pet.name %></strong>&emsp;<%= link_to "Adopt", "/adoption_applications/#{@adoption_application.id}?adopt_pet_id=#{@pet.id}" %></p>
+  <p>
+    <strong><%= @pet.name %></strong>&emsp;
+    <%= form_with url: "/adoption_applications/#{@adoption_application.id}", method: :get do |form| %>
+      <%= form.hidden_field :adopt_pet_id, value: "#{@pet.id}" %>
+      <%= form.submit "Adopt" %>
+    <% end %>
+  </p>
   <p>Age: <%= @pet.age %></p>
   <p>Breed: <%= @pet.breed %></p>
   <p>Adoptable: <%= @pet.adoptable %></p>

@@ -8,8 +8,7 @@ RSpec.describe "the adoption application show page" do
       city: "Denver",
       state: "CO",
       zip_code: "80210",
-      description: "I like doggos",
-      status: "In Progress"
+      description: "I like doggos"
     )
     @shelter = Shelter.create(
       name: "Aurora shelter",
@@ -81,6 +80,18 @@ RSpec.describe "the adoption application show page" do
       "/adoption_applications/#{@adoption_application.id}",
       ignore_query: true
     )
-    expect(page).to have_link("Adopt")
+    expect(page).to have_button("Adopt")
+  end
+
+  it "can add a pet to the adoption application" do
+    ApplicationPet.destroy_all
+
+    visit "/adoption_applications/#{@adoption_application.id}?name=#{@pet1.name}"
+
+    click_on("Adopt")
+
+    expect(page).to have_content("Pets applied for:")
+
+    expect(page).to have_link(@pet1.name)
   end
 end

@@ -6,8 +6,7 @@ class AdoptionApplicationsController < ApplicationController
     @adoption_application = AdoptionApplication.find(params[:id])
     @pet = Pet.find_by(name: params[:name])
     @pet = params[:name] if params[:name] && @pet.nil?
-    p params
-    @adoption_application.adopt(params[:adopt_pet_id]) if params[:adopt_pet_id]
+    @adoption_application.adopt(params[:adopt_pet_id])
   end
 
   def new

@@ -2,7 +2,7 @@ class AdoptionApplication < ApplicationRecord
   has_many :application_pets
   has_many :pets, through: :application_pets
 
-  after_initialize :set_defaults
+  after_create :set_defaults
 
   validates :name, presence: true
   validates :street_address, presence: true
@@ -20,10 +20,13 @@ class AdoptionApplication < ApplicationRecord
   end
 
   def adopt(pet_id)
+    return if pet_id.nil?
+
     pet_to_adopt = Pet.find_by(id: pet_id)
-    return if pet_to_adopt.nil? || pets.include?(pet_to_adopt)
+
+    return unless pet_to_adopt && !pets.include?(pet_to_adopt)
 
     pets << pet_to_adopt
-    update(status: "Pending")
+    pending
   end
 end
