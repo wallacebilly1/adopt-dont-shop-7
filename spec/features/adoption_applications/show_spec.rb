@@ -74,10 +74,13 @@ RSpec.describe "the adoption application show page" do
 
     expect(page).to have_content("Add a Pet to this application")
 
-    fill_in("pet search bar", with: "sphynx")
-    click_on("search pets")
+    fill_in("name", with: "Lucille Bald")
+    click_on("find pet")
 
-    expect(page).to have_current_path("/adoption_applications/#{@adoption_application.id}")
-    expect(page).to have_link("sphynx")
+    expect(page).to have_current_path(
+      "/adoption_applications/#{@adoption_application.id}",
+      ignore_query: true
+    )
+    expect(page).to have_link("Adopt")
   end
 end

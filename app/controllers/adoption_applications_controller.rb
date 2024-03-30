@@ -1,14 +1,16 @@
 class AdoptionApplicationsController < ApplicationController
   def index
-
   end
 
   def show
     @adoption_application = AdoptionApplication.find(params[:id])
+    @pet = Pet.find_by(name: params[:name])
+    return unless params[:name] && @pet.nil?
+
+    @pet = params[:name]
   end
 
   def new
-
   end
 
   def create
@@ -16,15 +18,17 @@ class AdoptionApplicationsController < ApplicationController
 
     if adoption_application.save
       redirect_to "/adoption_applications/#{adoption_application.id}"
-    else 
+    else
       # would be nice to have this message display lower on the page
       redirect_to "/adoption_applications/new"
       flash[:alert] = "Error: #{error_message(adoption_application.errors)}"
     end
   end
 
-private 
+  private
+
   def adoption_application_params
-    params.permit(:name, :street_address, :city, :state, :zip_code, :description, :status)
+    params.permit(:name, :street_address, :city, :state, :zip_code,
+                  :description, :status)
   end
 end
