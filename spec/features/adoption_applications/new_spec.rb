@@ -10,6 +10,7 @@ RSpec.describe "the adoption application new" do
     fill_in(:zip_code, with: 80210)
     fill_in(:description, with: "I love dogs and want more.")
     click_button("Submit Application")
+    # getting an error at the above line that I'm not familiar with and can't figure out - bw
     
     expect(page).to have_current_path("/adoption_applications/:id")
 
