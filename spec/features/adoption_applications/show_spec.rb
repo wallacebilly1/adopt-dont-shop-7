@@ -102,8 +102,8 @@ RSpec.describe "the adoption application show page" do
 
     click_on("Adopt")
 
-    expect(page).to have_content("Why would you make a good owner for these pet(s)")
-    expect(page).to have_content("Submit your Application")
+    expect(page).to have_content("Why would you make a good owner for these pet(s):")
+    expect(page).to have_button("Submit your Application")
   end
 
   it "when an application is submitted, the user is returned to their application show page, their status is updated to pending, and the section to add more pets is no longer there" do
