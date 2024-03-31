@@ -98,6 +98,10 @@ RSpec.describe "the adoption application show page" do
   it "displays an application submission section when a pet is added to the applicaton" do
     ApplicationPet.destroy_all
 
+    visit "/adoption_applications/#{@adoption_application.id}"
+
+    expect(page).to_not have_content("Submit your Application")
+
     visit "/adoption_applications/#{@adoption_application.id}?name=#{@pet1.name}"
 
     click_on("Adopt")
