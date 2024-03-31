@@ -12,7 +12,7 @@ adoption_application = AdoptionApplication.create!(
   state: "CO",
   zip_code: "80210",
   description: "I like doggos",
-  status: "in progress"
+  status: "Pending"
 )
 shelter = Shelter.create(
   name: "Aurora shelter",

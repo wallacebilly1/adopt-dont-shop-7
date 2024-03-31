@@ -1,6 +1,6 @@
 require "rails_helper"
 
-RSpec.describe "the adoption application show" do
+RSpec.describe "the adoption application show page" do
   before(:each) do
     @adoption_application = AdoptionApplication.create!(
       name: "Billy Neilson",
@@ -8,10 +8,8 @@ RSpec.describe "the adoption application show" do
       city: "Denver",
       state: "CO",
       zip_code: "80210",
-      description: "I like doggos",
-      status: "in progress"
+      description: "I like doggos"
     )
-
     @shelter = Shelter.create(
       name: "Aurora shelter",
       city: "Aurora, CO",
@@ -43,6 +41,8 @@ RSpec.describe "the adoption application show" do
   end
 
   it "shows the adoption application and all its attributes" do
+    @adoption_application.pending
+
     visit "/adoption_applications/#{@adoption_application.id}"
 
     expect(page).to have_content(@adoption_application.name)
@@ -57,6 +57,7 @@ RSpec.describe "the adoption application show" do
   end
 
   it "has links to the pets' show pages" do
+    @adoption_application.pending
     visit "/adoption_applications/#{@adoption_application.id}"
 
     expect(page).to have_link(@pet1.name)
@@ -65,5 +66,32 @@ RSpec.describe "the adoption application show" do
     click_link(@pet1.name)
 
     expect(page.current_path).to eq("/pets/#{@pet1.id}")
+  end
+
+  it "shows a section on the page to 'Add a Pet to this application' that can be used to search for pets" do
+    visit "/adoption_applications/#{@adoption_application.id}"
+
+    expect(page).to have_content("Add a Pet to this application")
+
+    fill_in("name", with: "Lucille Bald")
+    click_on("find pet")
+
+    expect(page).to have_current_path(
+      "/adoption_applications/#{@adoption_application.id}",
+      ignore_query: true
+    )
+    expect(page).to have_button("Adopt")
+  end
+
+  it "can add a pet to the adoption application" do
+    ApplicationPet.destroy_all
+
+    visit "/adoption_applications/#{@adoption_application.id}?name=#{@pet1.name}"
+
+    click_on("Adopt")
+
+    expect(page).to have_content("Pets applied for:")
+
+    expect(page).to have_link(@pet1.name)
   end
 end
