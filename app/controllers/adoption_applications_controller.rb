@@ -24,6 +24,18 @@ class AdoptionApplicationsController < ApplicationController
     end
   end
 
+  def update
+    @adoption_application = AdoptionApplication.find(params[:id])
+    # @pet = Pet.find_by(name: params[:name])
+    # @pet = params[:name] if params[:name] && @pet.nil?
+    # @adoption_application.adopt(params[:adopt_pet_id])
+
+    @adoption_application.update(adoption_application_params)
+    @adoption_application.pending
+
+    redirect_to "/adoption_applications/#{params[:id]}"
+  end
+
   private
 
   def adoption_application_params

@@ -113,7 +113,7 @@ RSpec.describe "the adoption application show page" do
 
     click_on("Adopt")
 
-    fill_in("details", with: "I am great with cats")
+    fill_in("description", with: "I am great with cats")
 
     click_on("Submit your Application")
 

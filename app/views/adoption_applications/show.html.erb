@@ -42,7 +42,7 @@
   <p>You can find <%= @pet.name %> at <%= @pet.shelter.name %>!</p>
 <% end %>
 
-<% if @adoption_application.pets.any? %>
+<% if @adoption_application.pets.any? && @adoption_application.status == "In Progress" %>
   <section id="submit_your_application">
   <h2> Submit your application </h2>
   <%= form_with url: "/adoption_applications/#{@adoption_application.id}", method: :patch, local: :true do |form| %>
