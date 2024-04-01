@@ -27,6 +27,5 @@ class AdoptionApplication < ApplicationRecord
     return unless pet_to_adopt && !pets.include?(pet_to_adopt)
 
     pets << pet_to_adopt
-    pending
   end
 end
