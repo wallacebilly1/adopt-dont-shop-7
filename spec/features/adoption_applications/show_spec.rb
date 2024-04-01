@@ -100,6 +100,21 @@ RSpec.describe "the adoption application show page" do
     expect(page).to have_content("Lobster")
   end
 
+  it "can return pet names that are case insensitive of the search" do
+    ApplicationPet.destroy_all
+    visit "/adoption_applications/#{@adoption_application.id}"
+
+    fill_in("name", with: "LuCiLLe")
+    click_on("find pet")
+
+    expect(page).to have_content("Lucille Bald")
+
+    fill_in("name", with: "lOBSTER")
+    click_on("find pet")
+
+    expect(page).to have_content("Lobster")
+  end
+
   it "can add a pet to the adoption application" do
     ApplicationPet.destroy_all
 
