@@ -39,7 +39,7 @@
     <% end %>
     </p>
   <% end %>
-<% elsif @pets_search.blank?%>
+<% elsif @pets_search.blank? && @pets_search != false %>
   <p> Could not find pet by that name. </p>
 <% end %>
 
