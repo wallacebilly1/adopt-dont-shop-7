@@ -69,17 +69,19 @@ RSpec.describe "the adoption application show page" do
   end
 
   it "shows a section on the page to 'Add a Pet to this application' that can be used to search for pets" do
+    ApplicationPet.destroy_all
+
     visit "/adoption_applications/#{@adoption_application.id}"
-
     expect(page).to have_content("Add a Pet to this application")
-
+    
     fill_in("name", with: "Lucille Bald")
     click_on("find pet")
-
+    
     expect(page).to have_current_path(
       "/adoption_applications/#{@adoption_application.id}",
       ignore_query: true
-    )
+      )
+
     expect(page).to have_button("Adopt")
   end
 
@@ -101,7 +103,7 @@ RSpec.describe "the adoption application show page" do
   it "can add a pet to the adoption application" do
     ApplicationPet.destroy_all
 
-    visit "/adoption_applications/#{@adoption_application.id}?name=#{@pet1.name}"
+    visit "/adoption_applications/#{@adoption_application.id}?search=#{@pet1.name}"
 
     click_on("Adopt")
 
@@ -117,7 +119,7 @@ RSpec.describe "the adoption application show page" do
 
     expect(page).to_not have_content("Submit your Application")
 
-    visit "/adoption_applications/#{@adoption_application.id}?name=#{@pet1.name}"
+    visit "/adoption_applications/#{@adoption_application.id}?search=#{@pet1.name}"
 
     click_on("Adopt")
 
@@ -128,7 +130,7 @@ RSpec.describe "the adoption application show page" do
   it "when an application is submitted, the user is returned to their application show page, their status is updated to pending, and the section to add more pets is no longer there" do
     ApplicationPet.destroy_all
 
-    visit "/adoption_applications/#{@adoption_application.id}?name=#{@pet1.name}"
+    visit "/adoption_applications/#{@adoption_application.id}?search=#{@pet1.name}"
 
     click_on("Adopt")
 
