@@ -4,8 +4,10 @@ class AdoptionApplicationsController < ApplicationController
 
   def show
     @adoption_application = AdoptionApplication.find(params[:id])
-    @pet = Pet.find_by(name: params[:name])
-    @pet = params[:name] if params[:name] && @pet.nil?
+    @pets = @adoption_application.pets
+    if params[:search].present?
+      @pets_search = Pet.search(params[:search])
+    end
     @adoption_application.adopt(params[:adopt_pet_id])
   end
 
@@ -26,9 +28,6 @@ class AdoptionApplicationsController < ApplicationController
 
   def update
     @adoption_application = AdoptionApplication.find(params[:id])
-    # @pet = Pet.find_by(name: params[:name])
-    # @pet = params[:name] if params[:name] && @pet.nil?
-    # @adoption_application.adopt(params[:adopt_pet_id])
 
     @adoption_application.update(adoption_application_params)
     @adoption_application.pending
