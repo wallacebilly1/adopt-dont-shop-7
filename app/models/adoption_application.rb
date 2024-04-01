@@ -1,6 +1,7 @@
 class AdoptionApplication < ApplicationRecord
   has_many :application_pets
   has_many :pets, through: :application_pets
+  has_many :shelters, through: :application_shelters
 
   after_create :set_defaults
 
