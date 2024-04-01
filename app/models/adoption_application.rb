@@ -1,6 +1,7 @@
 class AdoptionApplication < ApplicationRecord
   has_many :application_pets
   has_many :pets, through: :application_pets
+  has_many :shelters, through: :application_shelters
 
   after_create :set_defaults
 
@@ -27,5 +28,9 @@ class AdoptionApplication < ApplicationRecord
     return unless pet_to_adopt && !pets.include?(pet_to_adopt)
 
     pets << pet_to_adopt
+    ApplicationShelter.create!(
+      adoption_application_id: id,
+      shelter_id: pet_to_adopt.shelter_id
+    )
   end
 end
