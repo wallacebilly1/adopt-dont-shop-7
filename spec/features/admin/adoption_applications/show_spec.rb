@@ -102,7 +102,7 @@ RSpec.describe "the admin shelters display page" do
 
     expect(page).to have_current_path("/admin/adoption_applications/#{@adoption_application1.id}")
     expect(page).to_not have_content("Approve #{@pet1.name}")
-    expect(page).to have_content("#{@pet1.name} - Approved")
+    expect(page).to have_content("#{@pet1.name}:\nApproved")
   end
 
   it "allows an admin to approve a pet for that specific application" do
@@ -112,7 +112,7 @@ RSpec.describe "the admin shelters display page" do
 
     expect(page).to have_current_path("/admin/adoption_applications/#{@adoption_application1.id}")
     expect(page).to_not have_content("Approve #{@pet1.name}")
-    expect(page).to have_content("#{@pet1.name} - Approved")
+    expect(page).to have_content("#{@pet1.name}:\nApproved")
 
     visit "/admin/adoption_applications/#{@adoption_application2.id}"
 
@@ -127,7 +127,7 @@ RSpec.describe "the admin shelters display page" do
 
     expect(page).to have_current_path("/admin/adoption_applications/#{@adoption_application1.id}")
     expect(page).to_not have_content("Reject #{@pet1.name}")
-    expect(page).to have_content("#{@pet1.name} - Rejected")
+    expect(page).to have_content("#{@pet1.name}:\nRejected")
 
     visit "/admin/adoption_applications/#{@adoption_application2.id}"
 

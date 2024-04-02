@@ -10,23 +10,23 @@
 
 <h2> Pets on Application </h2>
 <% @application_pets.each do |application_pet| %>
-  <%= link_to "#{application_pet.pet.name}", "/pets/#{application_pet.pet.id}" %>
+  <h3> <%= link_to "#{application_pet.pet.name}", "/pets/#{application_pet.pet.id}" %>:</h3>
     <% if application_pet.status.nil? %>
-      <li> <%= form_with url: "/admin/application_pets/#{application_pet.id}", method: :patch do |form| %>
+      <%= form_with url: "/admin/application_pets/#{application_pet.id}", method: :patch do |form| %>
         <%= form.hidden_field :status, value: "Approved" %>
-        <%= form.hidden_field :adoption_application_id, value: application_pet.id %>
+        <%= form.hidden_field :adoption_application_id, value: application_pet.adoption_application_id %>
       
-        <%= form.submit "Approve #{application_pet.pet.name}" %> </li>
+        <%= form.submit "Approve #{application_pet.pet.name}" %>
       <% end %>
 
-      <li> <%= form_with url: "/admin/application_pets/#{application_pet.id}", method: :patch do |form| %>
+      <%= form_with url: "/admin/application_pets/#{application_pet.id}", method: :patch do |form| %>
         <%= form.hidden_field :status, value: "Rejected" %>
-        <%= form.hidden_field :adoption_application_id, value: application_pet.id %>
+        <%= form.hidden_field :adoption_application_id, value: application_pet.adoption_application_id %>
       
-        <%= form.submit "Reject #{application_pet.pet.name}" %> </li>
+        <%= form.submit "Reject #{application_pet.pet.name}" %>
       <% end %>
 
     <% else %>  
-      <h3> application_pet.status </h3>
+      <%= application_pet.status %> </br>
     <% end %>
 <% end %>
