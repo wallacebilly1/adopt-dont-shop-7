@@ -5,11 +5,7 @@ class AdoptionApplicationsController < ApplicationController
   def show
     @adoption_application = AdoptionApplication.find(params[:id])
     @pets = @adoption_application.pets
-    @pets_search = if params[:search].present?
-                     Pet.search(params[:search])
-                   else
-                     false
-                   end
+    @pets_search = params[:search].present ? Pet.search(params[:search]) : false
     @adoption_application.adopt(params[:adopt_pet_id])
   end
 
