@@ -91,7 +91,7 @@ RSpec.describe "the admin shelters display page" do
   end
 
   it "displays all pets on an application and there is a button to approve or deny the application for that pet" do
-    visit "/admin/adoption_applications/#{@adoption_application1}"
+    visit "/admin/adoption_applications/#{@adoption_application1.id}"
 
     expect(page).to have_button("Approve #{@pet1.name}")
     expect(page).to have_button("Reject #{@pet1.name}")
@@ -100,36 +100,36 @@ RSpec.describe "the admin shelters display page" do
 
     click_on("Approve #{@pet1.name}")
 
-    expect(page).to have_current_path("/admin/adoption_applications/#{@adoption_application1}")
+    expect(page).to have_current_path("/admin/adoption_applications/#{@adoption_application1.id}")
     expect(page).to_not have_content("Approve #{@pet1.name}")
     expect(page).to have_content("#{@pet1.name} - Approved")
   end
 
   it "allows an admin to approve a pet for that specific application" do
-    visit "/admin/adoption_applications/#{@adoption_application1}"
+    visit "/admin/adoption_applications/#{@adoption_application1.id}"
 
     click_on("Approve #{@pet1.name}")
 
-    expect(page).to have_current_path("/admin/adoption_applications/#{@adoption_application1}")
+    expect(page).to have_current_path("/admin/adoption_applications/#{@adoption_application1.id}")
     expect(page).to_not have_content("Approve #{@pet1.name}")
     expect(page).to have_content("#{@pet1.name} - Approved")
 
-    visit "/admin/adoption_applications/#{@adoption_application2}"
+    visit "/admin/adoption_applications/#{@adoption_application2.id}"
 
     expect(page).to have_button("Approve #{@pet1.name}")
     expect(page).to have_button("Reject #{@pet1.name}")
   end
 
   it "allows an admin to reject a pet for that specific application" do
-    visit "/admin/adoption_applications/#{@adoption_application1}"
+    visit "/admin/adoption_applications/#{@adoption_application1.id}"
 
     click_on("Reject #{@pet1.name}")
 
-    expect(page).to have_current_path("/admin/adoption_applications/#{@adoption_application1}")
+    expect(page).to have_current_path("/admin/adoption_applications/#{@adoption_application1.id}")
     expect(page).to_not have_content("Reject #{@pet1.name}")
     expect(page).to have_content("#{@pet1.name} - Rejected")
 
-    visit "/admin/adoption_applications/#{@adoption_application2}"
+    visit "/admin/adoption_applications/#{@adoption_application2.id}"
 
     expect(page).to have_button("Approve #{@pet1.name}")
     expect(page).to have_button("Reject #{@pet1.name}")
