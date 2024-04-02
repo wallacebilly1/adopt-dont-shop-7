@@ -13,17 +13,7 @@
 
 <div class="pending-applications">
   <h2>Shelters with pending applications</h2>
-  <% @pending_applications.each do |shelter, application_list| %>
-    <div id="shelter-<%= shelter.id %>">
-      <h3><%= shelter.name %></h3>
-      <% application_list.each do |application| %>
-        <div class="application-line-item">
-          <p><strong><%= application.name %></strong></p>
-          <p><%= application.street_address %>, <%= application.city %>, <%= application.state %>, <%= application.zip_code %></p>
-          <p>Why they would make a good owner:</p>
-          <p class="indent-p"><%= application.description %></p>
-        </div>
-      <% end %>
-    </div>
+  <% @shelters_with_pending.each do |shelter| %>
+    <div class="pending-shelter"><%= shelter.name %></div>
   <% end %>
 </div>

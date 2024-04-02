@@ -98,52 +98,15 @@ RSpec.describe "the admin shelters display page" do
   end
 
   it "shows shelters with pending applications" do
+    @adoption_application1.pending
+    @adoption_application2.pending
+
     visit "/admin/shelters"
 
     within ".pending-applications" do
       expect(page).to have_content(@shelter1.name)
       expect(page).to have_content(@shelter2.name)
       expect(page).to_not have_content(@shelter3.name)
-    end
-
-    within "#shelter-#{@shelter1.id}" do
-      expect(page).to have_content(@adoption_application1.name)
-      expect(page).to have_content(@adoption_application1.street_address)
-      expect(page).to have_content(@adoption_application1.city)
-      expect(page).to have_content(@adoption_application1.state)
-      expect(page).to have_content(@adoption_application1.zip_code)
-      expect(page).to have_content(@adoption_application1.description)
-      expect(page).to have_content(@adoption_application2.name)
-      expect(page).to have_content(@adoption_application2.street_address)
-      expect(page).to have_content(@adoption_application2.city)
-      expect(page).to have_content(@adoption_application2.state)
-      expect(page).to have_content(@adoption_application2.zip_code)
-      expect(page).to have_content(@adoption_application2.description)
-      expect(page).to have_content(@adoption_application3.name)
-      expect(page).to have_content(@adoption_application3.street_address)
-      expect(page).to have_content(@adoption_application3.city)
-      expect(page).to have_content(@adoption_application3.state)
-      expect(page).to have_content(@adoption_application3.zip_code)
-      expect(page).to have_content(@adoption_application3.description)
-    end
-
-    within "#shelter-#{@shelter2.id}" do
-      expect(page).to_not have_content(@adoption_application1.name)
-      expect(page).to_not have_content(@adoption_application1.street_address)
-      expect(page).to_not have_content(@adoption_application1.zip_code)
-      expect(page).to_not have_content(@adoption_application1.description)
-      expect(page).to have_content(@adoption_application2.name)
-      expect(page).to have_content(@adoption_application2.street_address)
-      expect(page).to have_content(@adoption_application2.city)
-      expect(page).to have_content(@adoption_application2.state)
-      expect(page).to have_content(@adoption_application2.zip_code)
-      expect(page).to have_content(@adoption_application2.description)
-      expect(page).to have_content(@adoption_application3.name)
-      expect(page).to have_content(@adoption_application3.street_address)
-      expect(page).to have_content(@adoption_application3.city)
-      expect(page).to have_content(@adoption_application3.state)
-      expect(page).to have_content(@adoption_application3.zip_code)
-      expect(page).to have_content(@adoption_application3.description)
     end
   end
 end
