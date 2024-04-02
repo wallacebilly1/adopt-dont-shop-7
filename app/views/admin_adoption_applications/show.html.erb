@@ -13,17 +13,17 @@
   <%= link_to "#{application_pet.pet.name}", "/pets/#{application_pet.pet.id}" %>
     <% if application_pet.status.nil? %>
       <li> <%= form_with url: "/admin/application_pets/#{application_pet.id}", method: :patch do |form| %>
-        <%= f.hidden_field :status, value: "Approved" %>
-        <%= f.hidden_field :application_id, value: appplication_pet.application_id %>
+        <%= form.hidden_field :status, value: "Approved" %>
+        <%= form.hidden_field :adoption_application_id, value: application_pet.id %>
       
-        <%= f.submit "Approve" %> </li>
+        <%= form.submit "Approve #{application_pet.pet.name}" %> </li>
       <% end %>
 
       <li> <%= form_with url: "/admin/application_pets/#{application_pet.id}", method: :patch do |form| %>
-        <%= f.hidden_field :status, value: "Rejected" %>
-        <%= f.hidden_field :application_id, value: appplication_pet.application_id %>
+        <%= form.hidden_field :status, value: "Rejected" %>
+        <%= form.hidden_field :adoption_application_id, value: application_pet.id %>
       
-        <%= f.submit "Reject" %> </li>
+        <%= form.submit "Reject #{application_pet.pet.name}" %> </li>
       <% end %>
 
     <% else %>  
