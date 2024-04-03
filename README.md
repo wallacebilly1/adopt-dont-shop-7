@@ -33,3 +33,18 @@ In this project, students will build upon the code in this repo to create a Pet 
 ## Check In
 
 This project will have one Check In. During your Check In, you should be prepared to review your database schema for the many to many relationship, your deployment to the internet, and your GitHub Projects board.
+
+## DTR
+
+[Link](https://docs.google.com/document/d/1WmVleZrTU7kS0e6yvZfeD55z7kQ2o_ETZpgrrQcUqM8/edit)
+
+## Database Diagram
+[Database Diagram.pdf](https://github.com/wallacebilly1/adopt-dont-shop-7/files/14858184/Untitled.1.pdf)
+
+## Project Board
+
+[Link](https://github.com/users/wallacebilly1/projects/3/views/1)
+
+## Heroku
+
+[Link](https://adopt-dont-shop-neil-billy-28fce6d9780b.herokuapp.com/)
