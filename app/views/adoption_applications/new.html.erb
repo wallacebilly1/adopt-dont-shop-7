@@ -1,6 +1,6 @@
 <h1>Apply for Adoption</h1>
 
-<%= form_with url: '/adoption_applications', method: :post, local: true do |form| %>
+<%= form_with url: '/adoption_applications', method: :post, local: true, data: {turbo: false} do |form| %>
   <%= form.label "Name:" %>
   <%= form.text_field :name %></br>
   <%= form.label "Street Address:" %>

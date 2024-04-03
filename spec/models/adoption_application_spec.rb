@@ -39,17 +39,19 @@ RSpec.describe AdoptionApplication, type: :model do
     it { should validate_presence_of(:description) }
   end
 
-  it "initializes as status = In Progress" do
-    expect(@application.status).to eq("In Progress")
-  end
+  describe "instance methods" do
+    it "initializes as status = In Progress" do
+      expect(@application.status).to eq("In Progress")
+    end
 
-  it "can update the application status" do
-    @application.pending
-    expect(@application.status).to eq("Pending")
-  end
+    it "can update the application status" do
+      @application.pending
+      expect(@application.status).to eq("Pending")
+    end
 
-  it "can adopt a pet" do
-    @application.adopt(@pet.id)
-    expect(@application.pets.include?(@pet)).to eq(true)
+    it "can adopt a pet" do
+      @application.adopt(@pet.id)
+      expect(@application.pets.include?(@pet)).to eq(true)
+    end
   end
 end
