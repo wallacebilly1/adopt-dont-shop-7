@@ -12,7 +12,7 @@ adoption_application1 = AdoptionApplication.create!(
   state: "CO",
   zip_code: "80210",
   description: "I like doggos",
-  status: "In Progress"
+  status: "Pending"
 )
 adoption_application2 = AdoptionApplication.create!(
   name: "Neilly Billson",
@@ -21,7 +21,7 @@ adoption_application2 = AdoptionApplication.create!(
   state: "CO",
   zip_code: "80999",
   description: "I like kittehs",
-  status: "In Progress"
+  status: "Pending"
 )
 adoption_application3 = AdoptionApplication.create!(
   name: "Tom Cruise",
@@ -30,7 +30,7 @@ adoption_application3 = AdoptionApplication.create!(
   state: "CO",
   zip_code: "80303",
   description: "YEAAAAAAAHHHHHHH",
-  status: "In Progress"
+  status: "Pending"
 )
 shelter1 = Shelter.create!(
   name: "Boulder shelter",
@@ -85,6 +85,11 @@ pet5 = Pet.create(
   name: "Biff",
   shelter_id: shelter3.id
 )
+
+adoption_application1.pending
+adoption_application2.pending
+adoption_application3.pending
+
 adoption_application1.adopt(pet1)
 adoption_application1.adopt(pet2)
 adoption_application2.adopt(pet1)
