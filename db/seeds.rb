@@ -85,9 +85,14 @@ pet5 = Pet.create(
   name: "Biff",
   shelter_id: shelter3.id
 )
+
 adoption_application1.adopt(pet1)
 adoption_application1.adopt(pet2)
 adoption_application2.adopt(pet1)
 adoption_application2.adopt(pet3)
 adoption_application3.adopt(pet2)
 adoption_application3.adopt(pet4)
+
+adoption_application1.pending
+adoption_application2.pending
+adoption_application3.pending

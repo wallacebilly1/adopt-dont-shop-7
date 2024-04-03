@@ -25,7 +25,7 @@ class AdoptionApplication < ApplicationRecord
 
     pet_to_adopt = Pet.find_by(id: pet_id)
 
-    return unless pet_to_adopt && !pets.include?(pet_to_adopt)
+    return if pet_to_adopt.nil? || pets.include?(pet_to_adopt)
 
     pets << pet_to_adopt
   end

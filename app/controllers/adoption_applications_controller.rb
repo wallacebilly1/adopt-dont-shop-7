@@ -1,6 +1,5 @@
 class AdoptionApplicationsController < ApplicationController
-  def index
-  end
+  def index; end
 
   def show
     @adoption_application = AdoptionApplication.find(params[:id])
@@ -9,8 +8,7 @@ class AdoptionApplicationsController < ApplicationController
     @adoption_application.adopt(params[:adopt_pet_id])
   end
 
-  def new
-  end
+  def new; end
 
   def create
     adoption_application = AdoptionApplication.new(adoption_application_params)
@@ -18,7 +16,6 @@ class AdoptionApplicationsController < ApplicationController
     if adoption_application.save
       redirect_to "/adoption_applications/#{adoption_application.id}"
     else
-      # would be nice to have this message display lower on the page
       redirect_to "/adoption_applications/new"
       flash[:alert] = "Error: #{error_message(adoption_application.errors)}"
     end
