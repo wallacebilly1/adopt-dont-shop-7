@@ -6,8 +6,9 @@
 #   movies = Movie.create([{ name: "Star Wars" }, { name: "Lord of the Rings" }])
 #   Character.create(name: "Luke", movie: movies.first)
 ApplicationPet.destroy_all
-AdoptionApplication.destroy_all
+Shelter.destroy_all
 Pet.destroy_all
+AdoptionApplication.destroy_all
 
 adoption_application1 = AdoptionApplication.create!(
   name: "Billy Neilson",
@@ -100,3 +101,5 @@ adoption_application3.adopt(pet4)
 adoption_application1.pending
 adoption_application2.pending
 adoption_application3.pending
+
+puts "seeded successfully"
