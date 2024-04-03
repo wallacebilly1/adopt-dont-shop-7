@@ -5,6 +5,10 @@
 #
 #   movies = Movie.create([{ name: "Star Wars" }, { name: "Lord of the Rings" }])
 #   Character.create(name: "Luke", movie: movies.first)
+AdoptionApplication.destroy_all
+Pet.destroy_all
+ApplicationPet.destroy_all
+
 adoption_application1 = AdoptionApplication.create!(
   name: "Billy Neilson",
   street_address: "123 Main St",
@@ -85,9 +89,14 @@ pet5 = Pet.create(
   name: "Biff",
   shelter_id: shelter3.id
 )
+
 adoption_application1.adopt(pet1)
 adoption_application1.adopt(pet2)
 adoption_application2.adopt(pet1)
 adoption_application2.adopt(pet3)
 adoption_application3.adopt(pet2)
 adoption_application3.adopt(pet4)
+
+adoption_application1.pending
+adoption_application2.pending
+adoption_application3.pending

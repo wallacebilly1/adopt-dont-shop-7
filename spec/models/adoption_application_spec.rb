@@ -41,6 +41,8 @@ RSpec.describe AdoptionApplication, type: :model do
 
   describe "instance methods" do
     it "initializes as status = In Progress" do
+      # This tests the adoption_application.set_defaults method,
+      # which is called upon object creation
       expect(@application.status).to eq("In Progress")
     end
 

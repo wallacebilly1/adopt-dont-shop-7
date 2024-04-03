@@ -7,10 +7,10 @@ RSpec.describe "the adoption application new" do
     fill_in(:street_address, with: "321 Dog Lover St.")
     fill_in(:city, with: "Denver")
     fill_in(:state, with: "CO")
-    fill_in(:zip_code, with: 80210)
+    fill_in(:zip_code, with: 80_210)
     fill_in(:description, with: "I love dogs and want more.")
     click_button("Submit Application")
-    
+
     expect(page).to have_current_path("/adoption_applications/#{AdoptionApplication.last.id}")
 
     expect(page).to have_content("Name: Billy Wallace")
@@ -23,7 +23,7 @@ RSpec.describe "the adoption application new" do
     visit "/adoption_applications/new"
     fill_in(:name, with: "Billy Wallace")
     fill_in(:street_address, with: "321 Dog Lover St.")
-    fill_in(:zip_code, with: 80210)
+    fill_in(:zip_code, with: 80_210)
     fill_in(:description, with: "I love dogs and want more.")
     click_button("Submit Application")
 
