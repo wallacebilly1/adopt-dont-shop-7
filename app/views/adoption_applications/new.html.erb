@@ -1,18 +1,18 @@
-<h1>Apply for Adoption</h1>
+<h1 class="page-title">Apply for Adoption</h1>
 
-<%= form_with url: '/adoption_applications', method: :post, local: true, data: {turbo: false} do |form| %>
+<%= form_with url: '/adoption_applications', method: :post, local: true, data: {turbo: false}, class: "adoption-application" do |form| %>
   <%= form.label "Name:" %>
-  <%= form.text_field :name %></br>
+  <%= form.text_field :name %>
   <%= form.label "Street Address:" %>
-  <%= form.text_field :street_address %></br>
+  <%= form.text_field :street_address %>
   <%= form.label "City:" %>
-  <%= form.text_field :city %></br>
+  <%= form.text_field :city %>
   <%= form.label "State:" %>
-  <%= form.text_field :state %></br>
+  <%= form.text_field :state %>
   <%= form.label "Zip Code:" %>
-  <%= form.number_field :zip_code %></br>
+  <%= form.number_field :zip_code %>
   <%= form.label "Please state why you would be a good pet owner:" %>
-  <%= form.text_area :description %></br>
+  <%= form.text_area :description %>
   <%= form.hidden_field :status, value: "In Progress" %>
   <%= form.submit "Submit Application" %>
 <% end %>

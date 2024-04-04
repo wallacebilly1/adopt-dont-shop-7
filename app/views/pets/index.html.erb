@@ -1,19 +1,27 @@
-<h1>All pets</h1>
+<h1 class="page-title">All Pets</h1>
 
-<%= form_with url: "/pets", method: :get, local: true, data: {turbo: false} do |f| %>
-  <%= f.label :search %>
-  <%= f.text_field :search %>
-  <%= f.submit "Search" %>
-<% end %>
+<div class="pets-header">
+  <%= form_with url: "/pets", method: :get, local: true, data: {turbo: false}, class: "search-form" do |f| %>
+    <%= f.label :search %>
+    <%= f.text_field :search %>
+    <%= f.submit "Search" %>
+  <% end %>
 
-<%= button_to "Start an Application", "/adoption_applications/new", method: :get %>
+  <%= button_to "Start an Application", "/adoption_applications/new", id: "start-application", method: :get %>
+</div>
 
-<% @pets.each do |pet| %>
-  <h3><%= pet.name %></h3>
-  <p>Age: <%= pet.age %></p>
-  <p>Breed: <%= pet.breed %></p>
-  <p>Adoptable: <%= pet.adoptable %></p>
-  <p>You can find <%= pet.name %> at <%= pet.shelter_name %>!</p>
-  <%= link_to "Edit #{pet.name}", "/pets/#{pet.id}/edit" %>
-  <%= link_to "Delete #{pet.name}", "/pets/#{pet.id}", method: :delete %>
-<% end %>
+<div class="list">
+  <% @pets.each do |pet| %>
+    <div class="list-item">
+      <h3><%= pet.name %></h3>
+      <p>Age: <%= pet.age %></p>
+      <p>Breed: <%= pet.breed %></p>
+      <p>Adoptable: <%= pet.adoptable %></p>
+      <p>You can find <%= pet.name %> at <%= pet.shelter_name %>!</p>
+      <div class="two-buttons">
+        <%= link_to "Edit #{pet.name}", "/pets/#{pet.id}/edit", class: "edit" %>
+        <%= link_to "Delete #{pet.name}", "/pets/#{pet.id}", method: :delete, class: "delete" %>
+      </div>
+    </div>
+  <% end %>
+</div>
