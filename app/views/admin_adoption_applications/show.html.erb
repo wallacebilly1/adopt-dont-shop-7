@@ -1,32 +1,39 @@
-<h1> Application </h1>
+<h1 class="page-title"> Application </h1>
 
-<h3> Name: <%= @adoption_application.name %> </h3>
-<h3>Address: <%= @adoption_application.street_address %> 
-  <%= @adoption_application.city %>,
-  <%= @adoption_application.state %> 
-  <%= @adoption_application.zip_code %></h3>
-<h3>Description: <%= @adoption_application.description %></h3>
-<h3>Status: <%= @adoption_application.status %></h3>
+<div class="application-description">
+  <h3> Name: <%= @adoption_application.name %> </h3>
+  <h3>Address: <%= @adoption_application.street_address %> 
+    <%= @adoption_application.city %>,
+    <%= @adoption_application.state %> 
+    <%= @adoption_application.zip_code %></h3>
+  <h3>Description: <%= @adoption_application.description %></h3>
+  <h3>Status: <%= @adoption_application.status %></h3>
+</div>
 
-<h2> Pets on Application </h2>
-<% @application_pets.each do |application_pet| %>
-  <h3> <%= link_to "#{application_pet.pet.name}", "/pets/#{application_pet.pet.id}" %>:</h3>
-    <% if application_pet.status.nil? %>
-      <%= form_with url: "/admin/application_pets/#{application_pet.id}", method: :patch, data: {turbo: false} do |form| %>
-        <%= form.hidden_field :status, value: "Approved" %>
-        <%= form.hidden_field :adoption_application_id, value: application_pet.adoption_application_id %>
-      
-        <%= form.submit "Approve #{application_pet.pet.name}" %>
-      <% end %>
+<h2 class="pets-on-application-header"> Pets on Application </h2>
+<div class="application-pet-list">
+  <% @application_pets.each do |application_pet| %>
+    <div class="application-pet-list-item">
+      <h3> <%= link_to "#{application_pet.pet.name}", "/pets/#{application_pet.pet.id}" %></h3>
+        <% if application_pet.status.nil? %>
+          <div class="two-buttons">
+            <%= form_with url: "/admin/application_pets/#{application_pet.id}", method: :patch, data: {turbo: false} do |form| %>
+              <%= form.hidden_field :status, value: "Approved" %>
+              <%= form.hidden_field :adoption_application_id, value: application_pet.adoption_application_id %>
+            
+              <%= form.submit "Approve #{application_pet.pet.name}", class: "approve" %>
+            <% end %>
 
-      <%= form_with url: "/admin/application_pets/#{application_pet.id}", method: :patch, data: {turbo: false} do |form| %>
-        <%= form.hidden_field :status, value: "Rejected" %>
-        <%= form.hidden_field :adoption_application_id, value: application_pet.adoption_application_id %>
-      
-        <%= form.submit "Reject #{application_pet.pet.name}" %>
-      <% end %>
-
-    <% else %>  
-      <%= application_pet.status %> </br>
-    <% end %>
-<% end %>
+            <%= form_with url: "/admin/application_pets/#{application_pet.id}", method: :patch, data: {turbo: false} do |form| %>
+              <%= form.hidden_field :status, value: "Rejected" %>
+              <%= form.hidden_field :adoption_application_id, value: application_pet.adoption_application_id %>
+            
+              <%= form.submit "Reject #{application_pet.pet.name}", class: "reject" %>
+            <% end %>
+          </div>
+        <% else %>  
+          <div class="approve-reject"><%= application_pet.status %></div>
+        <% end %>
+      </div>
+  <% end %>
+</div>
