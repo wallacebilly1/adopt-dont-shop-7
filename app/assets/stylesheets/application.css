@@ -13,3 +13,319 @@
  *= require_tree .
  *= require_self
  */
+
+body {
+  font-family: Arial, Helvetica, sans-serif;
+  margin: 0px;
+}
+
+.navbar {
+  display: grid;
+  grid-template-columns: repeat(4, max-content);
+  gap: 10px;
+  background-color: rgb(210, 225, 239);
+  justify-content: center;
+  justify-items: center;
+}
+
+.navbar > a {
+  padding: 15px 15px;
+  text-decoration: none;
+  color: blue;
+}
+
+.navbar > a:hover {
+  background-color: rgb(200, 215, 229);
+}
+
+.page-title {
+  width: 100%;
+  text-align: center;
+  margin-top: 10px;
+  margin-bottom: 15px;
+}
+
+.search-form {
+  display: grid;
+  grid-template-columns: repeat(3, max-content);
+  gap: 8px;
+  align-items: center;
+}
+
+.pets-header {
+  display: grid;
+  grid-template-columns: max-content max-content;
+  justify-content: center;
+  gap: 30px;
+  margin-bottom: 15px;
+}
+
+#start-application {
+  background-color: aquamarine;
+  border: 1px solid black;
+  padding: 5px 8px;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+#start-application:hover {
+  background-color: rgb(117, 245, 202);
+}
+
+.list {
+  display: grid;
+  margin-left: 20px;
+  margin-right: 20px;
+  margin-bottom: 20px;
+  gap: 5px;
+}
+
+.list-item {
+  display: grid;
+  border: 1px solid grey;
+  padding: 8px 12px;
+}
+
+.list-item > * {
+  margin-left: 10px;
+}
+
+.list-item > h3 {
+  margin-top: 2px;
+  margin-bottom: 5px;
+  margin-left: 0px;
+}
+
+.list-item > p {
+  margin-top: 2px;
+  margin-bottom: 2px;
+}
+
+.two-buttons {
+  display: grid;
+  grid-template-columns: repeat(2, max-content);
+  gap: 10px;
+  margin-top: 8px;
+}
+
+.two-buttons > a, .two-buttons > form > input[type="submit"] {
+  text-decoration: none;
+  color: black;
+  cursor: pointer;
+  border: 1px solid black;
+  border-radius: 5px;
+  padding: 4px 9px;
+}
+
+.edit, .approve {
+  background-color: rgb(158, 239, 158);
+}
+
+.edit:hover, .approve:hover {
+  background-color: rgb(138, 219, 138);
+}
+
+.delete, .reject {
+  background-color: rgb(255, 180, 180);
+}
+
+.delete:hover, .reject:hover {
+  background-color: rgb(255, 160, 160);
+}
+
+.adoption-application {
+  display: grid;
+  grid-template-columns: 210px 180px;
+  justify-content: center;
+  row-gap: 5px;
+  column-gap: 15px;
+}
+
+.adoption-application > label {
+  justify-self: end;
+  text-align: right;
+}
+
+.adoption-application > input[type="submit"] {
+  grid-column: 1 / 3;
+  width: max-content;
+  justify-self: center;
+  margin-top: 10px;
+}
+
+.applicant-info {
+  display: grid;
+  justify-content: center;
+  grid-template-columns: max-content;
+}
+
+.applicant-info > * {
+  margin-top: 4px;
+  margin-bottom: 4px;
+}
+
+.add-pet {
+  display: grid;
+  justify-content: center;
+  justify-items: center;
+  margin-bottom: 20px;
+}
+
+.adopt {
+  margin: 10px;
+  padding: 3px 10px;
+  cursor: pointer;
+}
+
+.pet-list {
+  display: grid;
+  justify-content: center;
+  margin-top: 18px;
+  margin-bottom: 5px;
+}
+
+.pet-list > h3 {
+  margin-top: 3px;
+  margin-bottom: 3px;
+}
+
+.pet-list > ol {
+  margin-top: 5px;
+  margin-bottom: 5px;
+}
+
+#submit_your_application {
+  display: grid;
+  justify-content: center;
+  justify-items: center;
+  margin-bottom: 20px;
+}
+
+#submit_your_application > form {
+  display: grid;
+  gap: 8px;
+  background-color: lightblue;
+  padding: 15px;
+}
+
+#submit_your_application > form > input[type="submit"] {
+  width: max-content;
+  padding: 4px 8px;
+  justify-self: center;
+}
+
+.edit-pet {
+  display: grid;
+  grid-template-columns: 210px 180px;
+  justify-content: center;
+  row-gap: 5px;
+  column-gap: 15px;
+  transform: translateX(-50px);
+}
+
+.edit-pet > label {
+  text-align: right;
+}
+
+.edit-pet > input[type="checkbox"] {
+  justify-self: left;
+}
+
+.edit-pet > input[type="submit"] {
+  grid-column: 1 / 3;
+  width: max-content;
+  justify-self: center;
+  transform: translateX(50px);
+  margin-top: 10px;
+}
+
+.pending-applications {
+  display: grid;
+  justify-content: center;
+}
+
+.pending-applications > h2 {
+  margin-top: 5px;
+  margin-bottom: 5px;
+}
+
+.pending-applications > ul {
+  margin-top: 6px;
+  margin-bottom: 20px;
+}
+
+.pending-applications > ul > li {
+  margin-bottom: 5px;
+  font-size: 18px;
+}
+
+.application-description {
+  display: grid;
+  margin-left: 30px;
+}
+
+.application-description > * {
+  margin-top: 3px;
+  margin-bottom: 3px;
+}
+
+.pets-on-application-header {
+  width: 100%;
+  text-align: center;
+}
+
+.application-pet-list {
+  display: grid;
+  margin-left: 20px;
+  margin-right: 20px;
+  margin-bottom: 40px;
+  gap: 10px;
+}
+
+.application-pet-list-item {
+  display: grid;
+  justify-content: center;
+  border: 1px solid black;
+}
+
+.application-pet-list-item > h3 {
+  margin-top: 8px;
+  margin-bottom: 8px;
+  text-align: center;
+}
+
+.application-pet-list-item > .two-buttons {
+  display: grid;
+  grid-template-columns: max-content max-content;
+  margin-bottom: 15px;
+}
+
+.approve-reject {
+  text-align: center;
+  margin-bottom: 15px;
+  font-size: 18px;
+  font-weight: 600;
+}
+
+.shelters-list-header {
+  display: grid;
+  grid-template-columns: max-content max-content;
+  justify-content: center;
+  align-content: center;
+  align-items: center;
+  gap: 30px;
+  margin-bottom: 20px;
+}
+
+.shelters-list-header > a {
+  text-decoration: none;
+  color: black;
+  padding: 8px 14px;
+  border: 1px solid black;
+  border-radius: 5px;
+  background-color: rgb(193, 225, 236);
+}
+
+.shelters-list-header > a:hover {
+  background-color: rgb(151, 201, 218);
+}

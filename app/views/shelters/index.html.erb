@@ -1,18 +1,22 @@
-<h1>All Shelters</h1>
+<h1 class="page-title">All Shelters</h1>
 
-<%= link_to "Sort by number of pets", "/shelters?sort=pet_count" %>
+<div class="shelters-list-header">
+  <%= link_to "Sort by number of pets", "/shelters?sort=pet_count" %>
 
-<%= form_with url: "/shelters", method: :get, local: true, data: {turbo: false} do |f| %>
-  <%= f.label :search %>
-  <%= f.text_field :search %>
-  <%= f.submit "Search" %>
-<% end %>
+  <%= form_with url: "/shelters", method: :get, local: true, data: {turbo: false} do |f| %>
+    <%= f.label :search %>
+    <%= f.text_field :search %>
+    <%= f.submit "Search" %>
+  <% end %>
+</div>
 
-<% @shelters.each do |shelter| %>
-  <div id="shelter-<%= shelter.id %>">
-    <h3><%= shelter.name %></h3>
-    <p>Created at: <%= shelter.created_at %></p>
-    <%= link_to "Update #{shelter.name}", "/shelters/#{shelter.id}/edit" %>
-    <%= link_to "Delete #{shelter.name}", "/shelters/#{shelter.id}", method: :delete %>
-  </div>
-<% end %>
+<div class="list">
+  <% @shelters.each do |shelter| %>
+    <div id="shelter-<%= shelter.id %>" class="list-item">
+      <h3><%= shelter.name %></h3>
+      <p>Created at: <%= shelter.created_at %></p>
+      <%= link_to "Update #{shelter.name}", "/shelters/#{shelter.id}/edit" %>
+      <%= link_to "Delete #{shelter.name}", "/shelters/#{shelter.id}", method: :delete %>
+    </div>
+  <% end %>
+</div>

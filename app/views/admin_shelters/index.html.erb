@@ -1,8 +1,8 @@
-<h2>Shelters list</h3>
+<h1 class="page-title">Shelters list</h1>
 
-<div class="shelters-list">
+<div class="list">
   <% @shelters.each do |shelter| %>
-    <div class="shelters-line-item">
+    <div class="list-item">
       <h3><%= shelter.name %></h3>
       <p><%= shelter.city %></p>
       <p>Foster program: <%= shelter.foster_program %></p>
@@ -12,8 +12,10 @@
 </div>
 
 <div class="pending-applications">
-  <h2>Shelters with pending applications</h2>
-  <% @shelters_with_pending.each do |shelter| %>
-    <div class="pending-shelter"><%= shelter.name %></div>
-  <% end %>
+  <h2 class="center-header">Shelters with pending applications</h2>
+  <ul>
+    <% @shelters_with_pending.each do |shelter| %>
+      <li class="pending-shelter"><%= shelter.name %></li>
+    <% end %>
+  </ul>
 </div>
